@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Questionnaire System</title>
+  </head>
+  <body>
+    <div class="container" style="margin: 5px;">
+        <h1 id="title"></h1>
+        <script src="QR.js"></script>
+        <div id="qrcode"></div>
+        <br/>
+        <br/>
+        <div id="href"></div>
+        <script src="qrcode.min.js"></script>
+        <script type="text/javascript">
+            /* https://davidshimjs.github.io/qrcodejs/ */
+            new QRCode(document.getElementById("qrcode"), "http://" + window.location.host + "/front/" + window.location.pathname.split('/')[window.location.pathname.split('/').length-1]);
+        </script>
+    </div>
+  </body>
+</html>

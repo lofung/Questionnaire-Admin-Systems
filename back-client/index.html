@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Questionnaire System</title>
+  </head>
+  <body>
+    <div class="container" style="margin: 5px;">
+        <h1>Questionnaire Admin</h1>
+        <div class="options" style="margin: 15px;">
+          <a href="/bd/admin-config/build-edit/">
+            Build (New)/Edit  Questionnaire
+          </a>
+        </div>
+
+        <div class="options" style="margin: 15px;">
+          <a href="/bd/admin-config/view-q">
+            View, activate/deactivate or delete questionnaires
+          </a>
+        </div>
+
+        <div class="options" style="margin: 15px;">
+          View Questionnaire Submitted Results →
+          <select class="token-dropdown" id="viewResults" style="width: 300px;">
+            <option value="default" selected="selected" disabled >Select...</option>
+          </select>
+        </div> 
+
+        <div class="options" style="margin: 15px;">
+          Questionnaire Preview →
+          <select class="token-dropdown" id="previewQ" style="width: 300px;">
+            <option value="default" selected="selected" disabled >Select...</option>
+          </select>
+        </div>
+
+        <div class="options" style="margin: 15px;">
+          Generate QR code →
+          <select class="token-dropdown" id="genQR" style="width: 300px;">
+            <option value="default" selected="selected" disabled >Select...</option>
+          </select>
+        </div>
+
+        <div class="options" style="margin: 15px;">
+          <a href="/">
+            Frontend landing page
+          </a>
+        </div>
+
+    <script src="landing_page.js"></script>
+  </body>
+</html>
