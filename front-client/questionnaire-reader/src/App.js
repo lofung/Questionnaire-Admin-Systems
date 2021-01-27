@@ -86,6 +86,40 @@ function App() {
     setQuestionList(tempAnswerList)
   }
 
+  const changeBlueLine = (e, idx, type) => {
+    //change the blue line length in the likert
+    //console.log(idx)
+    const line = document.getElementById("q"+idx+"line")
+    const radios = document.getElementsByClassName("q"+idx)
+    let select = e.target.value
+    if (type === "likert-agree"){
+      switch(e.target.value){
+        case "Strongly Disagree":
+          select = 1; break;
+        case "Disagree":
+          select = 2; break;
+        case "Neutral":
+          select = 3; break;
+        case "Agree":
+          select = 4; break;
+        case "Strongly Agree":
+          select = 5; break;
+        default:
+          select = 0; break;
+      }
+      line.style.width = `${77*(select-1)/4}%`
+    }
+    if (type ==="likert"){
+      line.style.width = `${90*(select-1)/radios.length}%`
+      //The math for likert looks something wrong. But visually ok. Given up to "fix"
+      //console.log("select="+select)
+      //console.log("length="+radios.length)
+    }
+    //record answer after changing line
+    recordAnswer(e, idx)
+  }
+
+
   const answerSwitch = (type, options, index, question) => {
     // https://stackoverflow.com/questions/46592833/how-to-use-switch-statement-inside-a-react-component/60365434
     // to resolve different question types for the questionnaire
@@ -108,18 +142,35 @@ function App() {
           let lowerLimit = parseInt(limits[0])
           let upperLimit = parseInt(limits[1])
           let resultArray = []
+          //make likert scale scores
           for (let k = lowerLimit; k<upperLimit+1; k++) { resultArray.push(k) }
-          obj = <select name={"q"+index} id={"q"+index} defaultValue="default" onChange={(e) => recordAnswer(e, index)}>
-            <option value="default" disabled>Select</option>
-            {resultArray.map(score => <option key={score+"score"} value={score}>{score}</option>)}
-          </select>
+
+          //old way of writing the code using dropdown
+          //obj = <select name={"q"+index} id={"q"+index} defaultValue="default" onChange={(e) => recordAnswer(e, index)}>
+          //  <option value="default" disabled>Select</option>
+          //  {resultArray.map(score => <option key={score+"score"} value={score}>{score}</option>)}
+          //</select>
+
+          obj = <ul className="likert">
+            <div className="line" id={"q"+index+"line"} key={"q"+index+"line"}/>
+            {resultArray.map(score => <li key={score+"likert"+index+"score"}><input type="radio" className={"q"+index} name={"q"+index} id={"q"+index} onChange={(e) => changeBlueLine(e, index, "likert")} value={score} /><label>{score}</label></li>)}
+          </ul>
+
         }
         if (options === "agree-disagree-5"){
-          let resultArray = ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"]
-          obj = <select name={"q"+index} id={"q"+index}  defaultValue="default" onChange={(e) => recordAnswer(e, index)}>
-            <option value="default" disabled>Select</option>
-            {resultArray.map(score => <option key={score+"agree"}value={score}>{score}</option>)}
-          </select>
+          let resultArray = ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]
+
+          //old way of writing the code using dropdown
+          //obj = <select name={"q"+index} id={"q"+index}  defaultValue="default" onChange={(e) => recordAnswer(e, index)}>
+          //  <option value="default" disabled>Select</option>
+          //  {resultArray.map(score => <option key={score+"agree"}value={score}>{score}</option>)}
+          //</select>
+
+          obj = <ul className="likert-agree">
+            <div className="line-agree" id={"q"+index+"line"} key={"q"+index+"line"}/>
+            {resultArray.map(score => <li key={score+"agree"+index+"score"} ><input type="radio" className={"q"+index} name={"q"+index} id={"q"+index} onChange={(e) => changeBlueLine(e, index, "likert-agree")} value={score} /><label>{score}</label></li>)}
+          </ul>
+
         }
         break;
       //the odd default catch
@@ -129,6 +180,8 @@ function App() {
     }
     return obj
   }
+  //idea
+  //https://codepen.io/Buttonpresser/pen/qiuIx?editors=1100
 
   //get the token in the address link and load the questions
   const getCurrentAddress = async () => {
@@ -167,11 +220,11 @@ function App() {
       Token: <input type="text" value={token} disabled />
       <div className="questionnaire-container" style={{"margin": "15px", "border":"1px solid"}}>
         <br />
-        Name: <input type="text" id="name" />
+        <span style={{"margin": "10px"}}>Name: <input type="text" id="name" /></span>
         {/* generate questionnaire here */}
         {questionList.map((data, idx) => 
           <div key={idx+'box'} className={'question-'+idx+'-box'} style={{"margin": "10px"}}>
-            <div>{idx+1}. {data.question}</div>
+            <div className="statement">{idx+1}. {data.question}</div>
             {/* generate answer in swtich */}
             {answerSwitch(data.type, data.options, idx, data.question)}
           </div>

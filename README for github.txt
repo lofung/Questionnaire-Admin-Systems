@@ -27,8 +27,8 @@ Database structure
 The online database of PostgreSQL can be accessed at 
 
 https://www.elephantsql.com/
-Login name: asunakiritoyuiasuna@gmail.com
-Password: laplacemath1234
+Login name: 
+Password: 
 
 The base database with all the questionnaire information can be accessed at
 
@@ -84,7 +84,5 @@ There are some quality-of-life(QOL) front end designs that could be made. For ex
 Progress steps: https://lofung.github.io/40_02_progress_steps/
 Seperating choices (MC): https://lofung.github.io/40_13_random_choice_UI/
 Animated buttons: https://lofung.github.io/40_32_animated_buttons/
-
-As of now 27/1/2021 night (Wedendasay), I have seemed to put in about 30 hours for this project. I surely hope to see some good results coming.
 
 

@@ -7,6 +7,9 @@ yarn-error.log*
 firebase-debug.log*
 firebase-debug.*.log*
 
+# readme, contain password
+README.txt
+
 # Firebase cache
 .firebase/
 

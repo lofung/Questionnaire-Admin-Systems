@@ -42,3 +42,5 @@
 14. currently, the app.use and app.get list in server.js is a bit messy. there should be a way to do better
 
 15. did not do mobile optimization for the front-client student-end due to time
+
+16. there is a element of "required" ready in the questionnaire field. When it is true, the students would be required to fill in the question.
