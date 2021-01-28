@@ -173,8 +173,12 @@ body{
 
 @media (min-width:480px)  { 
   /* smartphones, Android phones, landscape iPhone */ 
-  .likert-agree-label {
-    font-size: 10px;
+
+  /*.likert-agree-label {*/
+  /*  font-size: 10px; */
     /* no time to fix, fast bandage solution on the 5-likert-agree fonts overlapping issues*/
+
+  .questionnaire-container {
+    margin: 0px
   }
 }
