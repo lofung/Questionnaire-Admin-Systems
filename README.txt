@@ -27,8 +27,8 @@ Database structure
 The online database of PostgreSQL can be accessed at 
 
 https://www.elephantsql.com/
-Login name:
-Password:
+Login name: (available in offline files)
+Password: (available in offline files)
 
 The base database with all the questionnaire information can be accessed at
 
