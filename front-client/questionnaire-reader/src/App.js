@@ -171,7 +171,7 @@ function App() {
 
           obj = <ul className="likert-agree">
             <div className="line-agree" id={"q"+index+"line"} key={"q"+index+"line"}/>
-            {resultArray.map(score => <li key={score+"agree"+index+"score"} ><input type="radio" className={"q"+index} name={"q"+index} id={"q"+index} onChange={(e) => changeBlueLine(e, index, "likert-agree")} value={score} /><label className="likert-agree">{score}</label></li>)}
+            {resultArray.map(score => <li key={score+"agree"+index+"score"} ><input type="radio" className={"q"+index} name={"q"+index} id={"q"+index} onChange={(e) => changeBlueLine(e, index, "likert-agree")} value={score} /><label className="likert-agree-label">{score}</label></li>)}
           </ul>
 
         }
