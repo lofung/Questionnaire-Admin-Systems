@@ -164,8 +164,17 @@ body{
 /* https://stackoverflow.com/questions/6370690/media-queries-how-to-target-desktop-tablet-and-mobile */
 
 @media (min-width:740px) { /* the boundary px is roughly 740 but not exactly. Not bother to find the exact breaking point now.*/
+  /* if you drags 'lengthen' your browser horizontally, there exist some rare points where the user can "break" the blue lines. But it should be very rare*/
   .line-agree {
     transform: translate(40px, -26px); /*this line breaks on mobile but good on pc*/
   }
   
+}
+
+@media (min-width:480px)  { 
+  /* smartphones, Android phones, landscape iPhone */ 
+  .likert-agree {
+    transform: rotate(45deg)
+    /* no time to fix, fast bandage solution on the 5-likert-agree fonts overlapping issues*/
+  }
 }
