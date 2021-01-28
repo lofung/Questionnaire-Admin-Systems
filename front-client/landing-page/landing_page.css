@@ -21,6 +21,23 @@ body{
 	font-family: 'Roboto', sans-serif;
 }
 
+@media (max-width:480px)  { 
+
+
+    /*.likert-agree-label {*/
+    /*  font-size: 10px; */
+      /* no time to fix, fast bandage solution on the 5-likert-agree fonts overlapping issues*/
+  
+    body {
+        font-size:20px;
+        width: 479px;
+    }
+    
+    /*this line breaks on mobile but good on pc*/
+    /* smartphones, Android phones, landscape iPhone */ 
+    /* no time to fix, fast bandage solution on the 5-likert-agree fonts overlapping issues*/
+  }
+
 
 @media (min-width:480px)  { 
 
@@ -29,7 +46,7 @@ body{
     /*  font-size: 10px; */
       /* no time to fix, fast bandage solution on the 5-likert-agree fonts overlapping issues*/
   
-      #centerDiv {
+    #centerDiv {
         margin: 0;
         position: absolute;
         top: 50vh;
