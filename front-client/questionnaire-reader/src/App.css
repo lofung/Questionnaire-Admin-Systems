@@ -5,6 +5,14 @@ body{
 	font-family: 'Roboto', sans-serif;
 }
 
+.questionnaire-container {
+  margin: 15px
+}
+
+.container {
+  margin: 15px
+}
+
 .App {
   text-align: center;
 }
@@ -179,6 +187,10 @@ body{
     /* no time to fix, fast bandage solution on the 5-likert-agree fonts overlapping issues*/
 
   .questionnaire-container {
+    margin: 0px
+  }
+
+  .container {
     margin: 0px
   }
 }

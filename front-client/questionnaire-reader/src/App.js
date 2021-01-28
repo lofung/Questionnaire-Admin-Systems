@@ -218,10 +218,10 @@ function App() {
   }, []);
 
   return (
-    <div className="container" style={{"margin": "15px"}}>
+    <div className="container">
       <h1>{title}</h1>
       Token: <input type="text" value={token} disabled />
-      <div className="questionnaire-container" style={{"margin": "15px", "border":"1px solid"}}>
+      <div className="questionnaire-container" style={{"border":"1px solid"}}>
         <br />
         <span style={{"margin": "10px"}}>Nickname/alias: <input type="text" id="name" placeholder="No real name please!"/></span>
         {/* generate questionnaire here */}
