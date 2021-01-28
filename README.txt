@@ -2,6 +2,31 @@ README.
 
 Please use notepad++
 
+If you cannot open the website in any formats, PLEASE CERTAINLY LET KELVIN KNOW. I have worked more than 30 hours on this project and definitely do not want to be ghosted just because "someone cannot open the designated files".
+
+-----------------------------------------
+To download the source code .zip file
+-----------------------------------------
+
+The whole folder (200MB, recommanded)
+https://drive.google.com/file/d/1PPPbfSPtaqXphnJvOcfAIk4QekCQz5tO/view?usp=sharing
+
+Without node_modules (20MB)
+https://drive.google.com/file/d/1xFSdmqdI6yra9Ckt9u_oOqMwB3OPhQZI/view?usp=sharing
+
+-----------------------------------------
+GITHUB Repositories
+-----------------------------------------
+
+(A) The whole folder (the whole website has to be worked that way since there are relative links)
+https://github.com/lofung/OSP
+
+(B) OSP_Frontend
+https://github.com/lofung/OSP_frontend
+
+(C) OSP_Backend
+https://github.com/lofung/OSP_backend
+
 -----------------------------------------
 HOW TO START THE SERVER
 -----------------------------------------
