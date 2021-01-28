@@ -154,6 +154,8 @@
 
 /* end of blue line of all likert*/
 
+/* https://stackoverflow.com/questions/6370690/media-queries-how-to-target-desktop-tablet-and-mobile */
+
 @media (min-width:740px) {
   .line-agree {
     transform: translate(40px, -26px); /*this line breaks on mobile but good on pc*/
