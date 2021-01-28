@@ -7,10 +7,6 @@
 #centerDiv {
     margin: 0;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
     text-align: center
 }
 
@@ -24,3 +20,26 @@ body{
 	background: #D1DCE4;
 	font-family: 'Roboto', sans-serif;
 }
+
+
+@media (min-width:480px)  { 
+
+
+    /*.likert-agree-label {*/
+    /*  font-size: 10px; */
+      /* no time to fix, fast bandage solution on the 5-likert-agree fonts overlapping issues*/
+  
+      #centerDiv {
+        margin: 0;
+        position: absolute;
+        top: 50vh;
+        left: 50vw;
+        margin-right: -50vw;
+        transform: translate(-50%, -50%);
+        text-align: center
+    }
+    
+    /*this line breaks on mobile but good on pc*/
+    /* smartphones, Android phones, landscape iPhone */ 
+    /* no time to fix, fast bandage solution on the 5-likert-agree fonts overlapping issues*/
+  }

@@ -180,7 +180,7 @@ body{
 }
 
 @media (min-width:480px)  { 
-  /* smartphones, Android phones, landscape iPhone */ 
+
 
   /*.likert-agree-label {*/
   /*  font-size: 10px; */
@@ -193,4 +193,7 @@ body{
   .container {
     margin: 15px
   }
+  /*this line breaks on mobile but good on pc*/
+  /* smartphones, Android phones, landscape iPhone */ 
+  /* no time to fix, fast bandage solution on the 5-likert-agree fonts overlapping issues*/
 }
