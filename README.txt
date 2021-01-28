@@ -27,8 +27,8 @@ Database structure
 The online database of PostgreSQL can be accessed at 
 
 https://www.elephantsql.com/
-Login name: asunakiritoyuiasuna@gmail.com
-Password: laplacemath1234
+Login name:
+Password:
 
 The base database with all the questionnaire information can be accessed at
 
