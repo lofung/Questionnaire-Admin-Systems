@@ -88,6 +88,8 @@ function App() {
 
   const changeBlueLine = (e, idx, type) => {
     //change the blue line length in the likert
+    //NOT PURELY FRONTEND, THERE IS AN TRIGGER TO CHANGE JSON IN THE END!!
+
     //console.log(idx)
     const line = document.getElementById("q"+idx+"line")
     const radios = document.getElementsByClassName("q"+idx)
@@ -108,6 +110,7 @@ function App() {
           select = 0; break;
       }
       line.style.width = `${77*(select-1)/4}%`
+      //blindly tested values. roughly works
     }
     if (type ==="likert"){
       line.style.width = `${90*(select-1)/radios.length}%`
@@ -220,7 +223,7 @@ function App() {
       Token: <input type="text" value={token} disabled />
       <div className="questionnaire-container" style={{"margin": "15px", "border":"1px solid"}}>
         <br />
-        <span style={{"margin": "10px"}}>Name: <input type="text" id="name" /></span>
+        <span style={{"margin": "10px"}}>Nickname/alias: <input type="text" id="name" placeholder="No real name please!"/></span>
         {/* generate questionnaire here */}
         {questionList.map((data, idx) => 
           <div key={idx+'box'} className={'question-'+idx+'-box'} style={{"margin": "10px"}}>

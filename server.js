@@ -32,6 +32,8 @@ app.use('/api/v1/', routers)
 //to serve different static file to multiple react models
 //https://stackoverflow.com/questions/52452541/why-does-react-routes-doesnt-work-on-server-properly?rq=1
 
+//currently not the best way to list all the app.use at the front page. Will figure out how to organize later.
+
 //for loading admin backend landing page
 app.use('/bd/admin-config/', express.static('back-client/')) //this line makes sure that the static files gets loaded, or not if not exists.
 //the path in app.use before express.static MUST MATCH

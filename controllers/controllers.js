@@ -135,6 +135,7 @@ exports.buildNewScheme = async (req, res, next) => {
 
     // **HOWEVER, there is also an issue where when EDITING the questionnaire, the sub-database also needs to be updated which is annoying
     // **it compounds the problem when someone wants to EDIT the questionnaire in the middle of a live run collecting data.
+    // **Hence this feature it not put in as of 28/1/2021, Thursday. Too risky.
 
     console.log("new schcme called")
     //'token', 'questionnaire_name', 'active', 'create_date', 'modi_date', 'content_JSON', questionList, moneySignList

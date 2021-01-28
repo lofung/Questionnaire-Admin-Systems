@@ -81,8 +81,8 @@ Frontend designs have been given up at this stage since it could take a few week
 
 There are some quality-of-life(QOL) front end designs that could be made. For example
 
-Progress steps: https://lofung.github.io/40_02_progress_steps/
-Seperating choices (MC): https://lofung.github.io/40_13_random_choice_UI/
+Progress steps: https://lofung.github.io/40_02_progress_steps/ ((DONE))
+Seperating choices (MC): https://lofung.github.io/40_13_random_choice_UI/  ((DONE))
 Animated buttons: https://lofung.github.io/40_32_animated_buttons/
 
 

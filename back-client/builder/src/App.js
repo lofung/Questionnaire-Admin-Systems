@@ -38,6 +38,8 @@ function App() {
       if(data.type !=="mc" && data.type !=="likert") { data.options = ""}
     })
     setQuestionList(newArray) 
+
+    //asign values to appropiate boxes
     let token = document.getElementById('token').value
     let questionnaire_name = document.getElementById('name').value
 
@@ -117,20 +119,92 @@ function App() {
     //if select is type and mc then next text box allow typing
     if (item==="type" && e.target.value === "mc"){
       //nextsibling is the next tag that is not a child
+      //this is mc
       e.target.nextSibling.disabled = false
       e.target.nextSibling.placeholder="Seperate MC options with ;"
     } else if (item==="type" && e.target.value === "likert"){
+      //this is likert
       e.target.nextSibling.disabled = false
+      e.target.nextSibling.placeholder="Select from dropdown"
     } else if (item==="type") {
+      //this is NOT likert or mc
       e.target.nextSibling.disabled = true
       e.target.nextSibling.placeholder=""
       setQuestionList(newArray)
     }
 
+    //then show or delete the preview bubbles
+    //purely frontend
+    if (item==="options" && (e.target.previousSibling.value==="mc"||e.target.previousSibling.value==="likert") ){
+      //if someone type in options; and the selected type is mc or likert, then
+      drawBubbles(idx, e.target.value, e.target.previousSibling.value)
+    } else if (item==="type" && (e.target.value==="textbox")) {
+      //if someone chooses textbox in  type, then delete all bubbles
+      drawBubbles(idx, "", "textbox")
+    } else if (item==="type" && (e.target.value==="mc"||e.target.value==="likert")){
+      //if someone chooses mc or likert in type, then check if there exists options in the next box
+      drawBubbles(idx, e.target.nextSibling.value, e.target.value)
+      //index, take the value at the next box, the type is the current value
+    }
+      // (idx, input value, TYPE  in the last box)
+  }
+
+  //show preview bubbles for likert and mc
+  function drawBubbles(idx, value, type){
+    let previewBox = document.getElementById("sample"+idx)
+    previewBox.innerHTML = ``
+
+    if (value==="1-10"){
+      //when changing to any number, 
+      //1. use regex
+      //2. apply a loop to generate the array
+
+      const tags = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+      
+      //then attach tags to the designated preview div
+      //https://lofung.github.io/40_13_random_choice_UI/
+      tags.forEach(tag => {
+        const tagEl = document.createElement('span')
+        tagEl.classList.add('tag')
+        tagEl.classList.add('light-blue')
+        tagEl.innerText = tag
+        previewBox.appendChild(tagEl)
+      })
+
+    } else if (value==="agree-disagree-5") {
+
+      const tags = ["Strongly disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]
+      
+      //then attach tags to the designated preview div
+      tags.forEach(tag => {
+        const tagEl = document.createElement('span')
+        tagEl.classList.add('tag')
+        tagEl.classList.add('light-blue')
+        tagEl.innerText = tag
+        previewBox.appendChild(tagEl)
+      })
+
+    } else {
+
+      //anything else, ordinary mc options
+      const tags = value.split(';')
+        .filter(tag => tag.trim()!=='')//does not add any consecutive semi-colons
+        .map(tag=>tag.trim())//delete empty spaces at the start and the end
+
+      //then attach tags to the designated preview div
+      tags.forEach(tag => {
+        const tagEl = document.createElement('span')
+        tagEl.classList.add('tag')
+        tagEl.innerText = tag
+        previewBox.appendChild(tagEl)
+      })
+
+    }
   }
 
   function reloadId(){
     //reload token
+    document.getElementById("reloadToken").disabled = false
     let result = makeid(8)
     document.getElementById('token').value = result;
     existingTokenList.forEach(tokenObj => {
@@ -167,6 +241,8 @@ function App() {
 
   const getCurrentQuestions = async (e) => {
     //get the current questions for that given token
+    
+    reloadId();//bandage fix when switching back from edit to "CREATE", that the reload token button does not come back to active.
     try {
       const response = await fetch('/api/v1/questionnaire-live/' + e.target.value) //get token questions
       //console.log(response)
@@ -191,6 +267,7 @@ function App() {
           choice.nextSibling.disabled = false
         }
       })
+      enableDisableReloadTokenButton();
     } catch (err) {
       console.error(err)
     }
@@ -198,10 +275,11 @@ function App() {
   }
 
   const enableDisableReloadTokenButton = () => {
-    //STILL WORKING, does not work now
-    if (document.getElementById('selectMode').value = "create") {
+    //STILL WORKING ON IT, does not work now
+    if (document.getElementById('selectMode').value === "create") {
       //disable the token reload button to avoid 
       //alert("is create")
+      reloadId();
       document.getElementById("reloadToken").disabled = false
     } else {
       //alert("not create")
@@ -218,7 +296,7 @@ function App() {
     <div className="container" style={{"margin": "25px"}}>
       <h1>Build a questionnaire</h1>
       <div>Select questionnaire to edit:</div>
-      <select class="token-dropdown" id="selectMode" style={{"width": "300px"}} onChange={(e) => getCurrentQuestions(e)} onSelect={() => enableDisableReloadTokenButton()}>
+      <select className="token-dropdown" id="selectMode" style={{"width": "300px"}} onChange={(e) => getCurrentQuestions(e)}>
         <option value="create">Create new questionnaire</option>
       </select>
       <br />
@@ -231,7 +309,8 @@ function App() {
       <div style={{"margin": "15px", "border":"1px solid"}}>
         <div style={{"margin": "15px"}}>
         {questionList.map((data, idx) =>
-          <div key={idx} style={{"margin": "15px"}}>
+        <div key={idx}>
+          <div style={{"margin": "15px"}}>
             <input type="text" name="question" value={data["question"]} onChange={(e) => changeItem(e, idx, "question")}/>
             <select name="type" className="typeBox" value={data["type"]} onChange={(e) => changeItem(e, idx, "type")}>
               <option value="textbox">Textbox</option>
@@ -245,6 +324,8 @@ function App() {
             </datalist>
             <button onClick={(e)=>addRow(e, idx)}>+</button>
           </div>
+          <div id={"sample"+idx}></div>
+        </div>
         )
 
         /* end of map */}

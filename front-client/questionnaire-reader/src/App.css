@@ -148,7 +148,15 @@
   height: 2px;
   background-color: cornflowerblue;
   transition: width 333ms ease-out;
-  transform: translate(40px, -26px)
+  /* transform: translate(40px, -26px); this line breaks on mobile but good on pc*/
+  transform: translate(1.6em, -2.2em); /*this line works on 'smaller mobiles'; NOT TEST COMPLETELY*/
 }
 
 /* end of blue line of all likert*/
+
+@media (min-width:740px) {
+  .line-agree {
+    transform: translate(40px, -26px); /*this line breaks on mobile but good on pc*/
+  }
+  
+}

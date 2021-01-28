@@ -24,11 +24,12 @@
 
 6. in the builder, it is possible to select a old questionnaire, edit it, reload the token, and then the update would go to nowhere or be really messed up. Need to look for a way to properly disable the reload button when editing a old questionnaire
 
-7. now it is a 'feature' to low a old questionnaire and then choose to "create a new questionnaire". few problems.
+7. now it is a 'feature' to load a old questionnaire and then choose to "create a new questionnaire" and then it would "copy" question from another old questionnaire such that you can make a new one. Few problems.
 (1) one can submit a new questionnaire witht the same token (no prevention has been made yet, not enough time)
 (2) there would be an error show up in the console since one cannot fetch from the api with /create
+(3) **a redundant reloadId() is put in getCurrentQuestions() so to reload token before assigning a new token again. It temporarily mitigates the problem.
 
-8. it is now possible to submit questions in the scheme with empty field (did not have time to implement filter)
+8. it is now possible to submit questions in the scheme with empty fields (particularly in the question field) (did not have time to implement filter)
 
 9. it is now impossible delete rows manually (solution exists, no time to implement)
 
@@ -44,3 +45,7 @@
 15. did not do mobile optimization for the front-client student-end due to time
 
 16. there is a element of "required" ready in the questionnaire field. When it is true, the students would be required to fill in the question.
+
+17. trim spaces before the options in the mc field when making options. Code is already available in previous projects - need to test since it alters data sent to database (not a frontend cosmetic thing)
+
+18. when one starts a questionnaire on edit, the preview bubbles would not show up. (minor frontend issue, no time)

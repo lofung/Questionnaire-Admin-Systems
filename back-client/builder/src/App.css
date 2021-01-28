@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+body {
+  font-family: 'Muli', sans-serif;
+}
+
 .App {
   text-align: center;
 }
@@ -35,4 +41,19 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* design for tags */
+.tag {
+  background-color: #f0932b;
+  color: #fff;
+  border-radius: 50px;
+  padding: 10px 20px;
+  margin: 0 5px 10px 0;
+  font-size: 14px;
+  display: inline-block;
+}
+
+.light-blue {
+  background-color: lightslategrey;
 }
