@@ -9,8 +9,8 @@ HOW TO START THE SERVER
 The frontend react side are all built.
 
 You may see the project at:
-(1) https://warm-lake-91942.herokuapp.com/
-Heroku is very slow and could cause problem when accessing some API's (particularly when building a questionnaire. Since it would have an entry in one database and build another (sub-)database
+(1) https://questionnaire-admin-systems-fun.onrender.com/
+Heroku has stopped their free tier service and now it is deployed at Render.
 
 (2) Use localhost. Run at the root (where server.js is) with 
 
