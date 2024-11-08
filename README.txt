@@ -2,6 +2,31 @@ README.
 
 Please use notepad++
 
+If you cannot open the website in any formats, PLEASE CERTAINLY LET KELVIN KNOW. I have worked more than 30 hours on this project and definitely do not want to be ghosted just because "someone cannot open the designated files".
+
+-----------------------------------------
+To download the source code .zip file
+-----------------------------------------
+
+The whole folder (200MB, recommanded)
+https://drive.google.com/file/d/1PPPbfSPtaqXphnJvOcfAIk4QekCQz5tO/view?usp=sharing
+
+Without node_modules (20MB)
+https://drive.google.com/file/d/1xFSdmqdI6yra9Ckt9u_oOqMwB3OPhQZI/view?usp=sharing
+
+-----------------------------------------
+GITHUB Repositories
+-----------------------------------------
+
+(A) The whole folder (the whole website has to be worked that way since there are relative links)
+https://github.com/lofung/OSP
+
+(B) OSP_Frontend
+https://github.com/lofung/OSP_frontend
+
+(C) OSP_Backend
+https://github.com/lofung/OSP_backend
+
 -----------------------------------------
 HOW TO START THE SERVER
 -----------------------------------------
@@ -11,6 +36,7 @@ The frontend react side are all built.
 You may see the project at:
 (1) https://warm-lake-91942.herokuapp.com/
 Heroku is very slow and could cause problem when accessing some API's (particularly when building a questionnaire. Since it would have an entry in one database and build another (sub-)database
+((seems problem mitigrated as of 28/1/2021 Thursday))
 
 (2) Use localhost. Run at the root (where server.js is) with 
 
@@ -27,8 +53,8 @@ Database structure
 The online database of PostgreSQL can be accessed at 
 
 https://www.elephantsql.com/
-Login name: asunakiritoyuiasuna@gmail.com
-Password: laplacemath1234
+Login name: (available in offline files)
+Password: (available in offline files)
 
 The base database with all the questionnaire information can be accessed at
 

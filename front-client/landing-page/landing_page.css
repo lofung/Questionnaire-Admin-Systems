@@ -60,3 +60,6 @@ body{
     /* smartphones, Android phones, landscape iPhone */ 
     /* no time to fix, fast bandage solution on the 5-likert-agree fonts overlapping issues*/
   }
+
+
+/* Will have to port to react later. Vanilla javascript/HTML/CSS does not work well on mobile*/

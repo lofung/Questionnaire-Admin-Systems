@@ -49,3 +49,5 @@
 17. trim spaces before the options in the mc field when making options. Code is already available in previous projects - need to test since it alters data sent to database (not a frontend cosmetic thing)
 
 18. when one starts a questionnaire on edit, the preview bubbles would not show up. (minor frontend issue, no time)
+
+19. Will have to port front-client landing page to react later. Vanilla javascript/HTML/CSS does not work well on mobile
