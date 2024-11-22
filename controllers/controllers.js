@@ -1,4 +1,5 @@
-const pool = require("../config/elephantsql");
+//const pool = require("../config/elephantsql");
+const pool = require("../config/tembosql");
 
 // @desc GET ALL Questionnaires token and name
 // @route /api/v1/get-all-token
@@ -8,7 +9,7 @@ exports.getAllScheme = async (req, res, next) => {
     // get questions for the front-client students
     //res.send('hello world')
     try {
-        await pool.query('SELECT token, questionnaire_name FROM questionnaire_scheme', (err, result) => {
+        await pool.query('SELECT token, questionnaire_name FROM public.questionnaire_scheme', (err, result) => {
             if (err) throw err;
             //let options = {"token": result['rows'][0]['token'], "q_name": result['rows'][0]['questionnaire_name'], "modi_date": result['rows'][0]['modi_date'], "questions": result['rows'][0]['content_json']}
             //console.log(result)
@@ -35,7 +36,7 @@ exports.getQuestionnaireSummary = async (req, res, next) => {
     // get questions for the front-client students
     //res.send('hello world')
     try {
-        await pool.query('SELECT * FROM questionnaire_scheme', (err, result) => {
+        await pool.query('SELECT * FROM public.questionnaire_scheme', (err, result) => {
             if (err) throw err;
             //let options = {"token": result['rows'][0]['token'], "q_name": result['rows'][0]['questionnaire_name'], "modi_date": result['rows'][0]['modi_date'], "questions": result['rows'][0]['content_json']}
             //console.log(result)
@@ -65,7 +66,7 @@ exports.getQuestions = async (req, res, next) => {
     let query = []
     query.push(token)
     try {
-        let result = await pool.query('SELECT * FROM questionnaire_scheme WHERE token = $1', query, (err, result) => {
+        let result = await pool.query('SELECT * FROM public.questionnaire_scheme WHERE token = $1', query, (err, result) => {
             if (err) throw err;
             //let options = {"token": result['rows'][0]['token'], "q_name": result['rows'][0]['questionnaire_name'], "modi_date": result['rows'][0]['modi_date'], "questions": result['rows'][0]['content_json']}
             //console.log(result)
@@ -98,7 +99,7 @@ exports.postAnswers = async (req, res, next) => {
     //stringify JSON, then upload it with the below syntax into postqreSQL
     //console.log(final_JSON)
     try {
-        await pool.query("INSERT INTO " + token + " (name, create_date, answer) VALUES ($1, $2, $3::json)",
+        await pool.query("INSERT INTO public."+ token +" (name, create_date, answer) VALUES ($1, $2, $3::json)",
             [name, date, final_JSON],
             (err, result) => {
                 if (err) throw err;
@@ -147,7 +148,7 @@ exports.buildNewScheme = async (req, res, next) => {
 
     // 1. build a entry in the main database quesitonnaire_scheme
     try {
-        await pool.query("INSERT INTO questionnaire_scheme (questionnaire_name, active, create_date, modi_date, content_JSON, token) VALUES ($1, $2, $3, $4, $5::json, $6)",
+        await pool.query("INSERT INTO public.questionnaire_scheme (questionnaire_name, active, create_date, modi_date, content_JSON, token) VALUES ($1, $2, $3, $4, $5::json, $6)",
             [questionnaire_name, active, create_date, modi_date, final_JSON, token],
             (err, result) => {
                 if (err) throw err;
@@ -169,7 +170,7 @@ exports.buildNewScheme = async (req, res, next) => {
         //(the moneySignList and questionList array are built for this feature)
         //will discover later.
     try {
-        await pool.query("CREATE TABLE " + token + " (name varchar(100), create_date varchar(10), answer json)", (err, result) => {
+        await pool.query("CREATE TABLE public." + token + " (name varchar(100), create_date varchar(10), answer json)", (err, result) => {
             if (err) throw err;
         })
         console.log("create table success!")
@@ -197,7 +198,7 @@ exports.editScheme = async (req, res, next) => {
     //stringify JSON, then upload it with the below syntax into postqreSQL
     //console.log(final_JSON)
     try {
-        await pool.query("UPDATE questionnaire_scheme SET (questionnaire_name, active, modi_date, content_JSON) = ($1, $2, $3, $4::json) WHERE token=$5",
+        await pool.query("UPDATE public.questionnaire_scheme SET (questionnaire_name, active, modi_date, content_JSON) = ($1, $2, $3, $4::json) WHERE token=$5",
             [questionnaire_name, active, modi_date, final_JSON, token],
             (err, result) => {
                 if (err) throw err;
@@ -222,7 +223,7 @@ exports.editScheme = async (req, res, next) => {
 exports.deleteScheme = async (req, res, next) => {
     const token = req.params.token
     try {
-        await pool.query("DELETE FROM questionnaire_scheme WHERE token = $1", [ token ],
+        await pool.query("DELETE FROM public.questionnaire_scheme WHERE token = $1", [ token ],
             (err, result) => {
                 if (err) throw err;
             })
@@ -248,7 +249,7 @@ exports.viewAnswers = async (req, res, next) => {
     //res.send('hello world')
     let token = req.params.token;
     try {
-        await pool.query('SELECT * FROM ' + token, (err, result) => {
+        await pool.query('SELECT * FROM public.' + token, (err, result) => {
             if (err) throw err;
             //let options = {"token": result['rows'][0]['token'], "q_name": result['rows'][0]['questionnaire_name'], "modi_date": result['rows'][0]['modi_date'], "questions": result['rows'][0]['content_json']}
             //console.log(result)
